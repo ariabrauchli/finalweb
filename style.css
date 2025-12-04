@@ -1,0 +1,196 @@
+
+
+html{
+  background-color:black;
+}
+body{
+  color: #FCEFEFB8;
+  background-color: black;
+
+}
+h1{
+  color: #976648;
+  font-family: "Didot" !important;
+  text-align: center;
+  letter-spacing: .5em !important;
+  font-weight:900;
+  font-size: 3.5em;
+  padding: 1em;
+
+}
+h2{
+  color: #FFFFFFCC;
+  font-family: "Didot";
+  text-align: center;
+  font-size: 2.5em;
+  letter-spacing: .1em;
+  padding: .5em;
+}
+nav{
+
+    text-align: center;
+    background-color: black;
+    font-size: 2em;
+    word-spacing: 90px;
+    font-style: italic;
+    font-family: "Didot", italic;
+
+}
+.container{
+  background-color: black;
+  color: #976648;
+}
+a:link {
+  color: #C75b31B8;
+  background-color: black;
+  text-decoration: none;
+  text-color: red;
+}
+/* mouse over link */
+a:hover {
+  color: grey;
+  background-color: black;
+  text-decoration: none;
+}
+/* visited link */
+a:visited {
+  color: #FCEFEFB8;
+  background-color: black;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: lightgrey;
+  background-color: black;
+  text-decoration: none;
+}
+
+h3 {
+  font-size: 1.7em;
+  font-weight: 100;
+  letter-spacing: -1px;
+  color: #FFFFFF;
+  background-color: black;
+  text-align: center;
+  font-family: "Didot";
+  padding-top: 1em;
+
+}
+.bio{
+  text-align: center;
+  background-color: black;
+  height: 30;
+  font-family: "georgia";
+  color: #FFFFFF;
+}
+p{
+  color: #FFFFFF;
+  background-color: black;
+  font-family: "avenir";
+  text-align: center;
+}
+.card-body{
+  background-color: black;
+}
+
+
+
+.small-mtop {
+  margin-top: 0.5em;
+  background-color: black;
+
+    }
+
+.grow-nav {
+  min-height: 6em;
+  background-color: black;
+
+    }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+
+}
+.biotxt{
+  margin-left: 22em;
+  margin-right: 22em;
+  text-align: center;
+  background-color: black;
+  color: #FCEFEFB8;
+  font-family: "avenir";
+
+}
+
+.card-title{
+   text-align: center;
+   background-color: black;
+   color: #7f492a;
+
+   font-family: "avenir";
+   font-weight: bold;
+
+}
+
+
+.navlink:hover {
+    color: gray
+}
+div.gallery {
+  border: 80px solid black;
+   display: block;
+
+}
+
+div.gallery img {
+  width: auto;
+
+
+}
+
+.desc {
+
+  text-align: center;
+   display: block;
+
+}
+
+
+.responsive {
+
+  float: left;
+  width: 33%;
+
+}
+
+h4{
+  color: #FFFFFF;
+  font-family: "didot";
+  font-style: italic;
+  letter-spacing: .2em;
+
+}
+button{
+  background-color:#000000;
+	border:2px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Georgia;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 6px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #4f352a;
+}
+button:hover {
+	background-color:#292020;
+
+}
+.beach{
+
+  width:300%;
+  background-color: black;
+}
