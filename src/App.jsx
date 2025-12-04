@@ -1,40 +1,56 @@
 import './App.css'
-import '../style.css'  
+import '../style.css'
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import ContactPage from "./pages/contact";
+import HomePage from "./pages/home";
+import GalleryPage from "./pages/gallery";
 
 export default function App() {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    document.body.classList.toggle("theme-light", theme === "light");
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
   return (
-    <div>
-      <h1>ARIA BRAUCHLI</h1>
+    <Router>
+      <div>
+        <h1>ARIA BRAUCHLI</h1>
 
-      <div className="container">
-        <nav className="nav justify-content-center align-items-center mynav grow-nav">
-          <div className="d-flex justify-content-around flex-wrap navgroup">
-            <a className="nav-link active navlink shrink-link" href="index.html">Home</a>
-            <a className="nav-link navlink shrink-link" href="buy.html">Gallery</a>
-            <a className="nav-link navlink shrink-link" href="https://www.instagram.com/aria.b.photography/">Instagram</a>
-            <a className="nav-link navlink shrink-link" href="contact.html">Contact</a>
-          </div>
-        </nav>
+        <div className="container">
+          <nav className="nav justify-content-center align-items-center mynav grow-nav">
+            <div className="d-flex justify-content-around flex-wrap navgroup">
+
+              <Link className="nav-link active navlink shrink-link" to="/">
+                Home
+              </Link>
+
+              <Link className="nav-link navlink shrink-link" to="/gallery">
+                Gallery
+              </Link>
+
+              <Link className="nav-link navlink shrink-link" to="/contact">
+                Contact
+              </Link>
+
+            </div>
+            <button className="theme-toggle" type="button" onClick={toggleTheme}>
+              {theme === "light" ? "Dark mode" : "Light mode"}
+            </button>
+          </nav>
+        </div>
+
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
       </div>
-
-      <div className="card-body">
-        <img
-          src="https://i.imgur.com/H7nxSBW.jpg"
-          alt="Aria"
-          width="400"
-          height="600"
-          className="center"
-        />
-
-        <h3>ABOUT ME</h3>
-        <h5 className="card-title">
-          photographer | STEM student | traveler
-        </h5>
-
-        <p className="biotxt">
-          Current student at University of Colorado at Boulder. Majoring in Creative Technology and Design. Enjoys sunsets, long walks on the beach and trying to escape America. I also do photography, if you couldn't tell. I have lived in many places, from D.C. to Bali, but I currently reside in Boulder, Colorado.
-        </p>
-      </div>
-    </div>
+    </Router>
   )
 }
