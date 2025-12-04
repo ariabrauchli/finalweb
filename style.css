@@ -100,7 +100,7 @@ a:active {
 
 h3 {
   font-size: 1.7em;
-  font-weight: 100;
+  font-weight: 400;
   letter-spacing: -1px;
   color: #FFFFFF;
   background-color: black;
@@ -388,8 +388,8 @@ button:hover {
 .hero-image-frame {
   width: 100%;
   max-width: 540px;
-  background: radial-gradient(120% 120% at 20% 20%, rgba(151, 102, 72, 0.18), rgba(0, 0, 0, 0.7));
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 18px;
   padding: 1.1em;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
@@ -489,6 +489,17 @@ button:hover {
 
 .filter-chip.active,
 .filter-chip:hover {
+  background: #7f492a;
+  color: #ffffff;
+}
+
+body.theme-light .filter-chip {
+  color: #7f492a;
+  border-color: #7f492a;
+}
+
+body.theme-light .filter-chip.active,
+body.theme-light .filter-chip:hover {
   background: #7f492a;
   color: #ffffff;
 }

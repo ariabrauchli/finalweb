@@ -1,6 +1,6 @@
 import './App.css'
 import '../style.css'
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ContactPage from "./pages/contact";
 import HomePage from "./pages/home";
