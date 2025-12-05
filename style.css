@@ -11,6 +11,7 @@ body{
   color: #FCEFEFB8;
   background-color: black;
   font-family: var(--font-body);
+  scroll-behavior: smooth;
 }
 
 .theme-toggle {
@@ -374,7 +375,7 @@ button:hover {
 
 .hero-actions {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1em;
   flex-wrap: wrap;
   margin-bottom: 0.5em;
@@ -388,6 +389,8 @@ button:hover {
   font-family: var(--font-body);
   text-decoration: none;
   letter-spacing: 0.05em;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .btn:visited {
@@ -407,6 +410,8 @@ button:hover {
   background: #976648;
   border-color: #976648;
   color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
 }
 
 .hero-image-wrap {
@@ -422,6 +427,13 @@ button:hover {
   border-radius: 18px;
   padding: 1.1em;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-image-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .hero-image-frame img {
@@ -553,6 +565,8 @@ body.theme-light .filter-chip:hover {
   text-align: left;
   cursor: pointer;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  isolation: isolate;
 }
 
 .gallery-card:hover {
@@ -599,18 +613,26 @@ body.theme-light .filter-chip:hover {
 }
 
 .card-adobe {
-  background: #7f492a;
-  color: #ffffff;
+  background: #0b0b0b;
+  color: #f7f1e8;
   padding: 0.35em 0.8em;
   border-radius: 12px;
   font-size: 0.9em;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-weight: 700;
 }
 
 .card-adobe:hover {
-  background: #976648;
-  color: #ffffff;
+  background: #0b0b0b;
+  color: #f7f1e8;
+}
+
+.card-adobe:link,
+.card-adobe:visited,
+.card-adobe:active,
+.card-adobe:hover {
+  color: #f7f1e8;
 }
 
 .card-meta {
@@ -689,9 +711,9 @@ body.theme-light .filter-chip:hover {
 .modal-image-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  max-height: 80vh;
+  object-fit: cover;
   display: block;
-  max-height: 640px;
   background: #000000;
 }
 
@@ -706,15 +728,27 @@ body.theme-light .filter-chip:hover {
 
 .modal-nav button {
   pointer-events: auto;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #ffffff;
-  font-size: 2rem;
-  width: 44px;
-  height: 60px;
-  display: grid;
-  place-items: center;
+  font-size: 1.4rem;
+  width: 36px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
   cursor: pointer;
+  border-radius: 10px;
+  margin: 0 0.35em;
+}
+
+.modal-nav button:first-of-type {
+  margin-left: 0.6em;
+}
+
+.modal-nav button:last-of-type {
+  margin-right: 0.6em;
 }
 
 .modal-details {

@@ -24,6 +24,7 @@ const images = [
     category: "Landscape",
     description: "Aerial view of the crater and surrounding lava fields.",
     adobeLink: "https://stock.adobe.com/contributor/208457991/aria-brauchli?asset_id=979939126",
+    objectPosition: "center 80%",
   },
   {
     src: "https://as2.ftcdn.net/v2/jpg/09/59/16/01/1000_F_959160155_HcPMCn9bTDawzbegcQSlPwPZp3MOVUml.jpg",
@@ -80,6 +81,7 @@ const images = [
     category: "Landscape",
     description: "Minimalist dock scene disappearing into fog.",
     adobeLink: "https://stock.adobe.com/images/danger-sign-at-railroad-track/296374980?prev_url=detail",
+    objectPosition: "center 80%",
   },
   {
     src: "https://as1.ftcdn.net/jpg/03/55/32/02/500_F_355320256_Duhv9GVqHKqqu475qB4dbWhCi6ZOQj5T.jpg",
@@ -254,7 +256,11 @@ export default function GalleryPage() {
             type="button"
           >
             <div className="card-image">
-              <img src={item.src} alt={item.title} />
+              <img
+                src={item.src}
+                alt={item.title}
+                style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}
+              />
               <div className="card-overlay">
                 <span>{item.category}</span>
                 <a
@@ -288,7 +294,12 @@ export default function GalleryPage() {
       </div>
 
       {activeItem && (
-        <div className="gallery-modal" role="dialog" aria-modal="true" aria-label="Photo detail">
+        <div
+          className="gallery-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+        >
           <div className="modal-backdrop" onClick={closeModal} />
           <div className="modal-content">
             <button
@@ -296,14 +307,23 @@ export default function GalleryPage() {
               onClick={closeModal}
               aria-label="Close"
               ref={closeButtonRef}
+              type="button"
             >
               ×
             </button>
             <div className="modal-image-wrap">
-              <img src={activeItem.src} alt={activeItem.title} />
+              <img
+                src={activeItem.src}
+                alt={activeItem.title}
+                style={
+                  activeItem.objectPosition
+                    ? { objectPosition: activeItem.objectPosition }
+                    : undefined
+                }
+              />
               <div className="modal-nav">
-                <button onClick={showPrev} aria-label="Previous">‹</button>
-                <button onClick={showNext} aria-label="Next">›</button>
+                <button type="button" onClick={showPrev} aria-label="Previous">‹</button>
+                <button type="button" onClick={showNext} aria-label="Next">›</button>
               </div>
             </div>
             <div className="modal-details">
