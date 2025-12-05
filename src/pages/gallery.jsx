@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 const images = [
   {
@@ -176,6 +176,7 @@ const categories = ["All", "Landscape", "Documentary", "Travel", "Nature"];
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeIndex, setActiveIndex] = useState(null);
+  const closeButtonRef = useRef(null);
 
   const filtered = useMemo(() => {
     if (activeCategory === "All") return images;
@@ -185,17 +186,40 @@ export default function GalleryPage() {
   const openModal = (index) => setActiveIndex(index);
   const closeModal = () => setActiveIndex(null);
 
-  const showPrev = () => {
+  const showPrev = useCallback(() => {
     if (activeIndex === null) return;
     setActiveIndex((prev) => (prev - 1 + filtered.length) % filtered.length);
-  };
+  }, [activeIndex, filtered.length]);
 
-  const showNext = () => {
+  const showNext = useCallback(() => {
     if (activeIndex === null) return;
     setActiveIndex((prev) => (prev + 1) % filtered.length);
-  };
+  }, [activeIndex, filtered.length]);
 
   const activeItem = activeIndex !== null ? filtered[activeIndex] : null;
+
+  useEffect(() => {
+    if (activeItem && closeButtonRef.current) {
+      closeButtonRef.current.focus();
+    }
+  }, [activeItem]);
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (activeIndex === null) return;
+      if (e.key === "Escape") {
+        closeModal();
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        showPrev();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        showNext();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [activeIndex, showNext, showPrev]);
 
   return (
     <div className="gallery-page">
@@ -264,10 +288,15 @@ export default function GalleryPage() {
       </div>
 
       {activeItem && (
-        <div className="gallery-modal">
+        <div className="gallery-modal" role="dialog" aria-modal="true" aria-label="Photo detail">
           <div className="modal-backdrop" onClick={closeModal} />
           <div className="modal-content">
-            <button className="modal-close" onClick={closeModal} aria-label="Close">
+            <button
+              className="modal-close"
+              onClick={closeModal}
+              aria-label="Close"
+              ref={closeButtonRef}
+            >
               ×
             </button>
             <div className="modal-image-wrap">
@@ -279,7 +308,7 @@ export default function GalleryPage() {
             </div>
             <div className="modal-details">
               <p className="eyebrow">{activeItem.category}</p>
-              <h3>{activeItem.title}</h3>
+              <h3 id="modal-title">{activeItem.title}</h3>
               <p className="modal-location">{activeItem.location}</p>
               <p className="modal-description">{activeItem.description}</p>
               <div className="modal-actions">

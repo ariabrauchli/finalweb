@@ -1,6 +1,6 @@
 import './App.css'
 import '../style.css'
-import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ContactPage from "./pages/contact";
 import HomePage from "./pages/home";
@@ -20,28 +20,46 @@ export default function App() {
   return (
     <Router>
       <div>
-        <h1>ARIA BRAUCHLI</h1>
+        <div className="top-bar">
+          <h1>ARIA BRAUCHLI</h1>
+        </div>
+        <button className="theme-toggle floating" type="button" onClick={toggleTheme}>
+          {theme === "light" ? "Dark mode" : "Light mode"}
+        </button>
 
         <div className="container">
           <nav className="nav justify-content-center align-items-center mynav grow-nav">
             <div className="d-flex justify-content-around flex-wrap navgroup">
 
-              <Link className="nav-link active navlink shrink-link" to="/">
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link navlink shrink-link ${isActive ? "active" : ""}`
+                }
+                to="/"
+                end
+              >
                 Home
-              </Link>
+              </NavLink>
 
-              <Link className="nav-link navlink shrink-link" to="/gallery">
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link navlink shrink-link ${isActive ? "active" : ""}`
+                }
+                to="/gallery"
+              >
                 Gallery
-              </Link>
+              </NavLink>
 
-              <Link className="nav-link navlink shrink-link" to="/contact">
+              <NavLink
+                className={({ isActive }) =>
+                  `nav-link navlink shrink-link ${isActive ? "active" : ""}`
+                }
+                to="/contact"
+              >
                 Contact
-              </Link>
+              </NavLink>
 
             </div>
-            <button className="theme-toggle" type="button" onClick={toggleTheme}>
-              {theme === "light" ? "Dark mode" : "Light mode"}
-            </button>
           </nav>
         </div>
 

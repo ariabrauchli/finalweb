@@ -19,11 +19,17 @@ body{
   color: #fcefeff0;
   padding: 0.45em 0.9em;
   border-radius: 999px;
-  margin-left: 1em;
   font-family: var(--font-body);
   letter-spacing: 0.03em;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle.floating {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 120;
 }
 
 .theme-toggle:hover {
@@ -47,9 +53,18 @@ h1{
   letter-spacing: .5em !important;
   font-weight:900;
   font-size: 3.5em;
-  padding: 1em;
+  padding: 0.6em 0.4em;
 
 }
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1em;
+  position: relative;
+}
+
 h2{
   color: #FFFFFFCC;
   font-family: var(--font-display);
@@ -62,8 +77,8 @@ nav{
 
     text-align: center;
     background-color: black;
-    font-size: 2em;
-    word-spacing: 90px;
+    font-size: 1.2em;
+    word-spacing: 0;
     font-style: normal;
     font-family: var(--font-display);
 
@@ -135,7 +150,7 @@ p{
     }
 
 .grow-nav {
-  min-height: 6em;
+  min-height: 3.5em;
   background-color: black;
 
     }
@@ -169,6 +184,20 @@ p{
 
 .navlink:hover {
     color: gray
+}
+.navgroup {
+  gap: 1.6em;
+}
+
+.navlink.active {
+  color: #976648;
+  border-bottom: 2px solid #976648;
+  padding-bottom: 0.25em;
+}
+
+body.theme-light .navlink.active {
+  color: #7f492a;
+  border-color: #7f492a;
 }
 div.gallery {
   border: 80px solid black;
@@ -407,8 +436,13 @@ button:hover {
   margin-top: 0.75em;
   text-align: left;
   letter-spacing: 0.05em;
-  color: #d3c1b3;
-  font-size: 0.95rem;
+  color: #976648;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+body.theme-light .hero-image-caption {
+  color: #7f492a;
 }
 
 .intro {
@@ -753,6 +787,10 @@ body.theme-light .gallery-card,
 body.theme-light .modal-content,
 body.theme-light .hero-image-frame {
   background-color: #ffffff;
+  color: #1b1b1b;
+}
+
+body.theme-light .contact-row label {
   color: #1b1b1b;
 }
 
